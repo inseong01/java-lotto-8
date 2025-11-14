@@ -1,5 +1,6 @@
 package lotto.utility;
 
+import lotto.utility.config.LottoConfig;
 import lotto.utility.message.BonusMessage;
 import lotto.utility.message.CashMessage;
 import lotto.utility.message.InputMessage;
@@ -26,7 +27,7 @@ public class Validator {
   }
 
   public static void cashValidate(int cash) {
-    int PRODUCE_PRICE = 1_000;
+    int PRODUCE_PRICE = LottoConfig.LOTTO_PRICE.getValue();
 
     if (cash % PRODUCE_PRICE != 0) {
       throw new IllegalArgumentException(
