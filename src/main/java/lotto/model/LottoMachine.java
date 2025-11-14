@@ -1,6 +1,7 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.utility.config.LottoConfig;
 
 import java.util.List;
 
@@ -10,9 +11,9 @@ public class LottoMachine {
   }
 
   private static List<Integer> getNumbers() {
-    int START_RANGE = 1;
-    int END_RANGE = 45;
-    int NUMBER_AMOUNT = 6;
+    int START_RANGE = LottoConfig.NUMBER_START_RANGE.getValue();
+    int END_RANGE = LottoConfig.NUMBER_END_RANGE.getValue();
+    int NUMBER_AMOUNT = LottoConfig.NUMBER_AMOUNT.getValue();
 
     return Randoms.pickUniqueNumbersInRange(START_RANGE, END_RANGE, NUMBER_AMOUNT);
   }
