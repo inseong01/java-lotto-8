@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validator {
-  public static void inputValidate(String input) {
+  public static void inputNumberValidate(String input) {
     if (input.trim().isEmpty()) {
       throw new IllegalArgumentException(
               InputMessage.INPUT_IS_EMPTY_STRING.getDescription()
@@ -20,6 +20,22 @@ public class Validator {
     Pattern noneNumberPattern = Pattern.compile("\\D");
 
     if (noneNumberPattern.matcher(input).find()) {
+      throw new IllegalArgumentException(
+              InputMessage.INPUT_IS_NOT_A_NUMBER.getDescription()
+      );
+    }
+  }
+
+  public static void inputLottoValidate(String input) {
+    if (input.trim().isEmpty()) {
+      throw new IllegalArgumentException(
+              InputMessage.INPUT_IS_EMPTY_STRING.getDescription()
+      );
+    }
+
+    Pattern numberStringPattern = Pattern.compile("(\\s*\\d+\\s*,){1,5}(\\s*\\d+\\s*)");
+
+    if (!numberStringPattern.matcher(input).find()) {
       throw new IllegalArgumentException(
               InputMessage.INPUT_IS_NOT_A_NUMBER.getDescription()
       );

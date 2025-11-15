@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ValidatorTest {
   @Nested
-  class 현금_로또_보너스_번호_입력_검증 {
+  class 현금_보너스_번호_입력_검증 {
 
     @Test
     void 비어_있는_경우_예외_발생() {
@@ -17,7 +17,7 @@ public class ValidatorTest {
 
       for (String input : inputs) {
         assertThatThrownBy(() -> {
-          Validator.inputValidate(input);
+          Validator.inputNumberValidate(input);
         }).isInstanceOf(IllegalArgumentException.class);
       }
     }
@@ -28,7 +28,33 @@ public class ValidatorTest {
 
       for (String input : inputs) {
         assertThatThrownBy(() -> {
-          Validator.inputValidate(input);
+          Validator.inputNumberValidate(input);
+        }).isInstanceOf(IllegalArgumentException.class);
+      }
+    }
+  }
+
+  @Nested
+  class 로또_번호_입력_검증 {
+
+    @Test
+    void 비어_있는_경우_예외_발생() {
+      String[] inputs = {"", "   "};
+
+      for (String input : inputs) {
+        assertThatThrownBy(() -> {
+          Validator.inputLottoValidate(input);
+        }).isInstanceOf(IllegalArgumentException.class);
+      }
+    }
+
+    @Test
+    void 구분자가_아닌_문자가_포함_되어_있는_경우_예외_발생() {
+      String[] inputs = {"1,-5", "0b", "  2  , a  "};
+
+      for (String input : inputs) {
+        assertThatThrownBy(() -> {
+          Validator.inputLottoValidate(input);
         }).isInstanceOf(IllegalArgumentException.class);
       }
     }
