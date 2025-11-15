@@ -24,7 +24,7 @@ public class Calculator {
       boolean isBonusMatch = bonus.isMatchWith(myLotto.getNumbers());
 
       String rate = getRate(count, isBonusMatch);
-
+      if (rate.isEmpty()) return;
       prizeCountMap.put(rate, prizeCountMap.get(rate) + 1);
     });
 
