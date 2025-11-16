@@ -26,10 +26,10 @@ public class LottoController {
   }
 
   public int getUserCashInput() {
-    String SET_CASH_PROMPT = "금액을 입력해주세요";
+    String ENTER_CASH = "금액을 입력해주세요.";
 
     while (true) {
-      String cashInput = InputView.readLine(SET_CASH_PROMPT);
+      String cashInput = InputView.readLine(ENTER_CASH);
       try {
         Validator.inputNumberValidate(cashInput);
         return Integer.parseInt(cashInput.trim());
@@ -60,7 +60,7 @@ public class LottoController {
   public void printUserLotto() {
     int PRODUCT_PRICE = LottoConfig.LOTTO_PRICE.getValue();
     int lottoAmount = cash.getAmountOf(PRODUCT_PRICE);
-    String message = String.format("%d개를 구매했습니다.", lottoAmount);
+    String message = String.format("\n%d개를 구매했습니다.", lottoAmount);
     OutputView.print(message);
 
     userLotto.forEach((lotto) -> {
@@ -69,7 +69,7 @@ public class LottoController {
   }
 
   public List<Integer> getLottoNumbers() {
-    String ENTER_LOTTO_NUMBERS = "당첨 번호를 입력해 주세요.";
+    String ENTER_LOTTO_NUMBERS = "\n당첨 번호를 입력해 주세요.";
 
     while (true) {
       String input = InputView.readLine(ENTER_LOTTO_NUMBERS);
@@ -96,7 +96,7 @@ public class LottoController {
   }
 
   public int getBonusNumber() {
-    String ENTER_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    String ENTER_BONUS_NUMBER = "\n보너스 번호를 입력해 주세요.";
 
     while (true) {
       String input = InputView.readLine(ENTER_BONUS_NUMBER);
@@ -121,7 +121,7 @@ public class LottoController {
   }
 
   public void printLottoResult() {
-    OutputView.print("당첨 통계");
+    OutputView.print("\n당첨 통계");
     OutputView.print("---");
 
     Map<String, Integer> resultMap = Calculator.getMathResult(userLotto, jackpot, bonus);

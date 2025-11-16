@@ -3,8 +3,8 @@ package lotto.utility.message;
 import lotto.utility.config.LottoConfig;
 
 public enum CashMessage {
-  CASH_HAS_CHANGE("[ERROR] %d원 단위로 입력해주세요."),
-  CASH_IS_ZERO("[ERROR] %d원 이상으로 입력해주세요.");
+  CASH_HAS_CHANGE("[ERROR] %d원 단위로 입력해주세요.\n"),
+  CASH_IS_ZERO("[ERROR] %d원 이상으로 입력해주세요.\n");
 
   private final String template;
 
