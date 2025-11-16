@@ -11,7 +11,9 @@ import java.util.regex.Pattern;
 
 public class Validator {
   public static void inputNumberValidate(String input) {
-    if (input.trim().isEmpty()) {
+    String trimInput = input.trim();
+
+    if (trimInput.isEmpty()) {
       throw new IllegalArgumentException(
               InputMessage.INPUT_IS_EMPTY_STRING.getDescription()
       );
@@ -19,7 +21,7 @@ public class Validator {
 
     Pattern noneNumberPattern = Pattern.compile("\\D");
 
-    if (noneNumberPattern.matcher(input).find()) {
+    if (noneNumberPattern.matcher(trimInput).find()) {
       throw new IllegalArgumentException(
               InputMessage.INPUT_IS_NOT_A_NUMBER.getDescription()
       );
@@ -37,7 +39,7 @@ public class Validator {
 
     if (!numberStringPattern.matcher(input).find()) {
       throw new IllegalArgumentException(
-              InputMessage.INPUT_IS_NOT_A_NUMBER.getDescription()
+              InputMessage.INPUT_NOT_SUPPORTED_FORMAT.getDescription()
       );
     }
   }
