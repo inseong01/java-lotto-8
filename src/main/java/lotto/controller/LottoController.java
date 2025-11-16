@@ -44,7 +44,8 @@ public class LottoController {
       cash = new Cash(userCash);
     } catch (Exception e) {
       OutputView.print(e.getMessage());
-      getUserCashInput();
+      int reInputCash = getUserCashInput();
+      setCash(reInputCash);
     }
   }
 
@@ -89,7 +90,8 @@ public class LottoController {
       jackpot = LottoMachine.generateJackpotLotto(numbers);
     } catch (Exception e) {
       OutputView.print(e.getMessage());
-      getLottoNumbers();
+      List<Integer> reInputNumbers = getLottoNumbers();
+      setJackpotLotto(reInputNumbers);
     }
   }
 
@@ -113,7 +115,8 @@ public class LottoController {
       bonus = LottoMachine.generateBonusNumber(number, jackpotNumbers);
     } catch (Exception e) {
       OutputView.print(e.getMessage());
-      getBonusNumber();
+      int reInputNumber = getBonusNumber();
+      setBonusNumber(reInputNumber);
     }
   }
 
