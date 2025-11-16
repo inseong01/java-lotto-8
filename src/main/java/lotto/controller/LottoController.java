@@ -32,7 +32,7 @@ public class LottoController {
       String cashInput = InputView.readLine(SET_CASH_PROMPT);
       try {
         Validator.inputNumberValidate(cashInput);
-        return Integer.parseInt(cashInput);
+        return Integer.parseInt(cashInput.trim());
       } catch (Exception e) {
         OutputView.print(e.getMessage());
       }
@@ -102,7 +102,7 @@ public class LottoController {
       String input = InputView.readLine(ENTER_BONUS_NUMBER);
       try {
         Validator.inputNumberValidate(input);
-        return Integer.parseInt(input);
+        return Integer.parseInt(input.trim());
       } catch (Exception e) {
         OutputView.print(e.getMessage());
       }
