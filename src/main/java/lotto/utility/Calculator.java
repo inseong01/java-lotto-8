@@ -5,19 +5,13 @@ import lotto.model.Lotto;
 import lotto.utility.config.LottoPrize;
 import lotto.utility.config.LottoRate;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Calculator {
-  public static Map<String, Integer> getMathResult(List<Lotto> myLottos, Lotto jackpotLotto, BonusNumber bonus) {
-    Map<String, Integer> prizeCountMap = new HashMap<>(Map.of(
-            LottoRate.MATCH_6.getRate(), 0,
-            LottoRate.MATCH_5_BONUS.getRate(), 0,
-            LottoRate.MATCH_5.getRate(), 0,
-            LottoRate.MATCH_4.getRate(), 0,
-            LottoRate.MATCH_3.getRate(), 0
-    ));
+  public static LinkedHashMap<String, Integer> getMathResult(List<Lotto> myLottos, Lotto jackpotLotto, BonusNumber bonus) {
+    LinkedHashMap<String, Integer> prizeCountMap = setInitPrizeCountMap();
 
     myLottos.forEach(myLotto -> {
       int count = myLotto.getMatchCountOf(jackpotLotto.getNumbers());
@@ -27,6 +21,18 @@ public class Calculator {
       if (rate.isEmpty()) return;
       prizeCountMap.put(rate, prizeCountMap.get(rate) + 1);
     });
+
+    return prizeCountMap;
+  }
+
+  private static LinkedHashMap<String, Integer> setInitPrizeCountMap() {
+    LinkedHashMap<String, Integer> prizeCountMap = new LinkedHashMap<>();
+
+    prizeCountMap.put(LottoRate.MATCH_3.getRate(), 0);
+    prizeCountMap.put(LottoRate.MATCH_4.getRate(), 0);
+    prizeCountMap.put(LottoRate.MATCH_5.getRate(), 0);
+    prizeCountMap.put(LottoRate.MATCH_5_BONUS.getRate(), 0);
+    prizeCountMap.put(LottoRate.MATCH_6.getRate(), 0);
 
     return prizeCountMap;
   }
