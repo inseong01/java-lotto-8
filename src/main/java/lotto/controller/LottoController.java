@@ -8,13 +8,9 @@ import lotto.utility.Calculator;
 import lotto.utility.StringFormatter;
 import lotto.utility.Validator;
 import lotto.utility.config.LottoConfig;
-import lotto.utility.config.LottoPrize;
-import lotto.utility.config.LottoRate;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-
-import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
@@ -29,7 +25,6 @@ public class LottoController {
   public LottoController() {
   }
 
-  //  흐름 작성
   public int getUserCashInput() {
     String SET_CASH_PROMPT = "금액을 입력해주세요";
 

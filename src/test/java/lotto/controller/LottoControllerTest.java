@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.LottoMachine;
